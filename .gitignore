@@ -1,0 +1,64 @@
+```gitignore
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Environment Variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type Checking
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Build
+build/
+dist/
+
+# Database
+*.db
+*.sqlite3
+
+# ML Models
+*.pkl
+*.joblib
+*.onnx
+*.pt
+*.pth
+
+# Data
+data/processed/*
+!data/processed/.gitkeep
+
+# Docker
+*.tar
+
+# Misc
+.cache/
+```
