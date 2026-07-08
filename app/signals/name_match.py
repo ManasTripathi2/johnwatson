@@ -5,6 +5,8 @@ from app.evidence.evidence import Evidence
 from app.events.event import Event
 from app.signals.base import Signal
 
+from app.services.context import InterviewContext
+
 
 class NameMatchSignal(Signal):
     """
@@ -17,7 +19,11 @@ class NameMatchSignal(Signal):
     def __init__(self, candidate_name: str):
         self.candidate_name = candidate_name
 
-    def process(self, event: Event) -> Evidence | None:
+    def process(
+    self,
+    event: Event,
+    context: InterviewContext,
+    ) -> Evidence | None:
 
         if event.event_type != EventType.PARTICIPANT_JOINED:
             return None
