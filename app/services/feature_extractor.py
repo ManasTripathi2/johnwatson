@@ -4,12 +4,10 @@ from app.fusion.confidence import ConfidenceState
 class FeatureExtractor:
     """
     Converts a participant's evidence history into
-    a feature vector for the ML model.
+    the feature vector expected by the trained model.
     """
 
     FEATURE_NAMES = [
-        "evidence_count",
-        "average_signal_score",
         "name_match",
         "speaking_pattern",
         "addressed_by_name",
@@ -28,20 +26,7 @@ class FeatureExtractor:
             for evidence in state.evidence_history
         }
 
-        scores = [
-            evidence.score
-            for evidence in state.evidence_history
-        ]
-
-        average_score = (
-            sum(scores) / len(scores)
-            if scores
-            else 0.0
-        )
-
         return [
-            float(len(state.evidence_history)),
-            average_score,
             signal_scores.get("name_match", 0.0),
             signal_scores.get("speaking_pattern", 0.0),
             signal_scores.get("addressed_by_name", 0.0),

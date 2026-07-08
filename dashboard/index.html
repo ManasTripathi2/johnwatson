@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JohnWatson Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">JohnWatson</p>
+          <h1>Interview Candidate Confidence</h1>
+          <p class="lead">
+            Run a replay and inspect participant confidence, evidence, and
+            ranking.
+          </p>
+        </div>
+      </header>
+
+      <section class="controls-panel">
+        <div class="control-group">
+          <button id="replayButton" class="button primary">Run Replay</button>
+          <button id="refreshButton" class="button secondary">
+            Refresh Confidence
+          </button>
+        </div>
+        <div id="statusMessage" class="status-message">Ready.</div>
+      </section>
+
+      <section class="summary-grid">
+        <article class="summary-card">
+          <span class="summary-label">Interview</span>
+          <strong id="interviewId">—</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Candidate</span>
+          <strong id="candidateName">—</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Interviewer(s)</span>
+          <strong id="interviewerNames">—</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Participants</span>
+          <strong id="participantCount">—</strong>
+        </article>
+      </section>
+
+      <section class="table-section">
+        <div class="table-header">
+          <h2>Participant Confidence</h2>
+          <p>Highest-confidence participants are shown first.</p>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Participant</th>
+                <th>Bayesian</th>
+                <th>ML Score</th>
+                <th>Evidence</th>
+                <th>Latest reason</th>
+              </tr>
+            </thead>
+            <tbody id="participantTable">
+              <tr>
+                <td colspan="5" class="empty-state">No data yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+  </body>
+</html>
