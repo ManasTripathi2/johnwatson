@@ -1,0 +1,56 @@
+[
+  {
+    "offset_seconds": 0.0,
+    "event_type": "participant_joined",
+    "participant_id": "P001",
+    "data": {
+      "display_name": "Manas Tripathi"
+    }
+  },
+  {
+    "offset_seconds": 2.0,
+    "event_type": "participant_joined",
+    "participant_id": "P002",
+    "data": {
+      "display_name": "Alice Johnson"
+    }
+  },
+  {
+    "offset_seconds": 5.0,
+    "event_type": "transcript_received",
+    "participant_id": "P001",
+    "data": {
+      "text": "Manas Tripathi, could you introduce yourself?"
+    }
+  },
+  {
+    "offset_seconds": 9.0,
+    "event_type": "speech_ended",
+    "participant_id": "P001",
+    "data": {
+      "duration": 42
+    }
+  },
+  {
+    "offset_seconds": 15.0,
+    "event_type": "screen_share_started",
+    "participant_id": "P001",
+    "data": {}
+  },
+  {
+    "offset_seconds": 22.0,
+    "event_type": "speech_ended",
+    "participant_id": "P001",
+    "data": {
+      "duration": 58
+    }
+  },
+  {
+    "offset_seconds": 30.0,
+    "event_type": "transcript_received",
+    "participant_id": "P002",
+    "data": {
+      "text": "Thank you, Manas."
+    }
+  }
+]
