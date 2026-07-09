@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: johnwatson-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: johnwatson
+
+  template:
+    metadata:
+      labels:
+        app: johnwatson
+
+    spec:
+      containers:
+        - name: johnwatson
+
+          image: johnwatson-johnwatson:latest
+
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 8000
