@@ -1,0 +1,12 @@
+services:
+  johnwatson:
+    build: .
+    container_name: johnwatson
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - .:/app
+
+    restart: unless-stopped
