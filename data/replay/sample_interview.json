@@ -4,7 +4,7 @@
     "event_type": "participant_joined",
     "participant_id": "P001",
     "data": {
-      "display_name": "Manas Tripathi"
+      "display_name": "MacBook Pro"
     }
   },
   {
@@ -16,41 +16,69 @@
     }
   },
   {
-    "offset_seconds": 5.0,
-    "event_type": "transcript_received",
-    "participant_id": "P001",
+    "offset_seconds": 4.0,
+    "event_type": "participant_joined",
+    "participant_id": "P003",
     "data": {
-      "text": "Manas Tripathi, could you introduce yourself?"
+      "display_name": "Guest"
     }
   },
   {
-    "offset_seconds": 9.0,
+    "offset_seconds": 8.0,
+    "event_type": "transcript_received",
+    "participant_id": "P002",
+    "data": {
+      "text": "So Manas Tripathi, before we dive in, can you walk us through your background?"
+    }
+  },
+  {
+    "offset_seconds": 8.5,
+    "event_type": "speech_started",
+    "participant_id": "P001",
+    "data": {}
+  },
+  {
+    "offset_seconds": 48.0,
     "event_type": "speech_ended",
     "participant_id": "P001",
     "data": {
-      "duration": 42
+      "duration": 40
     }
   },
   {
-    "offset_seconds": 15.0,
+    "offset_seconds": 55.0,
     "event_type": "screen_share_started",
     "participant_id": "P001",
     "data": {}
   },
   {
-    "offset_seconds": 22.0,
+    "offset_seconds": 60.0,
+    "event_type": "speech_started",
+    "participant_id": "P001",
+    "data": {}
+  },
+  {
+    "offset_seconds": 95.0,
     "event_type": "speech_ended",
     "participant_id": "P001",
     "data": {
-      "duration": 58
+      "duration": 35
     }
   },
   {
-    "offset_seconds": 30.0,
-    "event_type": "transcript_received",
+    "offset_seconds": 100.0,
+    "event_type": "display_name_changed",
+    "participant_id": "P001",
+    "data": {
+      "display_name": "Manas Tripathi"
+    }
+  },
+  {
+    "offset_seconds": 105.0,
+    "event_type": "speech_ended",
     "participant_id": "P002",
     "data": {
-      "text": "Thank you, Manas."
+      "duration": 6
     }
   }
 ]
