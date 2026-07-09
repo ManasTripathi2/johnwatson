@@ -47,7 +47,7 @@ class KnownInterviewerSignal(Signal):
                 return Evidence(
                     participant_id=participant.participant_id,
                     signal=SignalType.KNOWN_INTERVIEWER,
-                    score=-0.90,
+                    score=-0.80,
                     reason=(
                         f"Participant matches known interviewer "
                         f"'{interviewer}'."

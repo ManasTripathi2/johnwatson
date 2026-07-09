@@ -16,6 +16,7 @@ class JoinTimeSignal(Signal):
     name = "join_time"
 
     MAX_DELAY_SECONDS = 600
+    MAX_SCORE = 0.20
 
     def process(
         self,
@@ -38,10 +39,12 @@ class JoinTimeSignal(Signal):
             (joined_at - interview_start).total_seconds()
         )
 
-        score = max(
+        closeness = max(
             0.0,
             1 - (delay / self.MAX_DELAY_SECONDS),
         )
+
+        score = closeness * self.MAX_SCORE
 
         return Evidence(
             participant_id=participant.participant_id,

@@ -15,14 +15,16 @@ class NameMatchSignal(Signal):
     """
 
     name = "name_match"
+    MATCH_THRESHOLD = 70
+    MAX_SCORE = 0.85
 
     def __init__(self, candidate_name: str):
         self.candidate_name = candidate_name
 
     def process(
-    self,
-    event: Event,
-    context: InterviewContext,
+        self,
+        event: Event,
+        context: InterviewContext,
     ) -> Evidence | None:
 
         if event.event_type != EventType.PARTICIPANT_JOINED:
@@ -38,7 +40,13 @@ class NameMatchSignal(Signal):
             self.candidate_name
         )
 
-        score = similarity / 100.0
+        if similarity < self.MATCH_THRESHOLD:
+            return None
+
+        score = (
+            (similarity - self.MATCH_THRESHOLD)
+            / (100 - self.MATCH_THRESHOLD)
+        ) * self.MAX_SCORE
 
         return Evidence(
             participant_id=event.participant_id,

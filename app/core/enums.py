@@ -34,7 +34,6 @@ class SignalType(str, Enum):
 class EvidenceSource(str, Enum):
     RULE = "rule"
     ML = "ml"
-    LLM = "llm"
 
 
 class InterviewStatus(str, Enum):

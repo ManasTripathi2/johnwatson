@@ -3,76 +3,131 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JohnWatson Dashboard</title>
+    <title>JohnWatson Evidence Console</title>
     <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
   <body>
-    <div class="app-shell">
-      <header class="topbar">
-        <div>
-          <p class="eyebrow">JohnWatson</p>
-          <h1>Interview Candidate Confidence</h1>
-          <p class="lead">
-            Run a replay and inspect participant confidence, evidence, and
-            ranking.
-          </p>
+    <main class="app-shell">
+      <header class="masthead">
+        <div class="brand-row">
+          <div class="brand-mark">JW</div>
+          <div>
+            <p class="brand-name">JohnWatson</p>
+            <p class="brand-subtitle">candidate evidence engine</p>
+          </div>
+          <div id="statusMessage" class="run-state">
+            <span class="run-dot"></span>
+            Ready
+          </div>
+        </div>
+
+        <div class="masthead-grid">
+          <div class="masthead-copy">
+            <p class="eyebrow">Interview replay</p>
+            <h1>Evidence-weighted identity confidence.</h1>
+            <p class="lead">
+              Each meeting event is converted into signal evidence, then fused
+              into a ranked candidate view.
+            </p>
+          </div>
+
+          <dl class="session-list" aria-label="Interview metadata">
+            <div>
+              <dt>Interview</dt>
+              <dd id="interviewId">-</dd>
+            </div>
+            <div>
+              <dt>Candidate</dt>
+              <dd id="candidateName">-</dd>
+            </div>
+            <div>
+              <dt>Interviewer</dt>
+              <dd id="interviewerNames">-</dd>
+            </div>
+          </dl>
         </div>
       </header>
 
-      <section class="controls-panel">
+      <section class="command-strip" aria-label="Replay controls">
         <div class="control-group">
-          <button id="replayButton" class="button primary">Run Replay</button>
-          <button id="refreshButton" class="button secondary">
-            Refresh Confidence
-          </button>
+          <button id="replayButton" class="button primary">Run replay</button>
+          <button id="refreshButton" class="button secondary">Refresh</button>
         </div>
-        <div id="statusMessage" class="status-message">Ready.</div>
+        <p class="command-note">
+          <span id="participantCount">0</span> participants observed
+        </p>
       </section>
 
-      <section class="summary-grid">
-        <article class="summary-card">
-          <span class="summary-label">Interview</span>
-          <strong id="interviewId">—</strong>
+      <section class="insight-grid">
+        <article class="lead-panel">
+          <div class="panel-heading">
+            <p class="section-label">Current lead</p>
+            <span id="leadBadge" class="lead-badge">waiting</span>
+          </div>
+          <div class="lead-readout">
+            <h2 id="leadName">No candidate selected</h2>
+            <p id="leadMeta">Run the replay to populate participant evidence.</p>
+          </div>
+          <div class="confidence-meter" aria-label="Lead confidence">
+            <div id="leadBar" class="confidence-fill"></div>
+          </div>
+          <dl class="metric-row">
+            <div>
+              <dt>Bayesian</dt>
+              <dd id="leadConfidence">-</dd>
+            </div>
+            <div>
+              <dt>Model</dt>
+              <dd id="leadModel">-</dd>
+            </div>
+            <div>
+              <dt>Evidence</dt>
+              <dd id="leadEvidence">-</dd>
+            </div>
+          </dl>
         </article>
-        <article class="summary-card">
-          <span class="summary-label">Candidate</span>
-          <strong id="candidateName">—</strong>
-        </article>
-        <article class="summary-card">
-          <span class="summary-label">Interviewer(s)</span>
-          <strong id="interviewerNames">—</strong>
-        </article>
-        <article class="summary-card">
-          <span class="summary-label">Participants</span>
-          <strong id="participantCount">—</strong>
-        </article>
+
+        <aside class="signal-panel">
+          <p class="section-label">Signal frame</p>
+          <ul class="signal-list">
+            <li><span>Name</span><b>display match</b></li>
+            <li><span>Speech</span><b>turn pattern</b></li>
+            <li><span>Prompt</span><b>addressed by name</b></li>
+            <li><span>Timing</span><b>join offset</b></li>
+            <li><span>Action</span><b>screen share</b></li>
+            <li><span>Roster</span><b>known interviewer</b></li>
+          </ul>
+        </aside>
       </section>
 
-      <section class="table-section">
-        <div class="table-header">
-          <h2>Participant Confidence</h2>
-          <p>Highest-confidence participants are shown first.</p>
+      <section class="matrix-section">
+        <div class="section-header">
+          <div>
+            <p class="section-label">Participant matrix</p>
+            <h2>Confidence and evidence count</h2>
+          </div>
         </div>
+
         <div class="table-container">
           <table>
             <thead>
               <tr>
+                <th>Rank</th>
                 <th>Participant</th>
                 <th>Bayesian</th>
-                <th>ML Score</th>
+                <th>Model</th>
                 <th>Evidence</th>
-                <th>Latest reason</th>
               </tr>
             </thead>
             <tbody id="participantTable">
               <tr>
-                <td colspan="5" class="empty-state">No data yet.</td>
+                <td colspan="5" class="empty-state">No replay data yet.</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
-    </div>
+    </main>
 
     <script src="/static/js/dashboard.js"></script>
   </body>

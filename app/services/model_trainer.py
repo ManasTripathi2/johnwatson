@@ -6,20 +6,15 @@ import xgboost as xgb
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
+from app.services.feature_extractor import FeatureExtractor
+
 
 class ModelTrainer:
     """
     Trains the candidate identification model.
     """
 
-    FEATURE_ORDER = [
-        "name_match",
-        "speaking_pattern",
-        "addressed_by_name",
-        "join_time",
-        "screen_share",
-        "known_interviewer",
-    ]
+    FEATURE_ORDER = FeatureExtractor.FEATURE_NAMES
 
     def load_dataset(
         self,

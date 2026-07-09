@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from app.fusion.bayesian import BayesianFusionEngine
 from app.models.interview import Interview
 from app.services.interview_engine import InterviewEngine
@@ -17,14 +19,17 @@ class JohnWatson:
     Central application service.
     """
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        interview_id: str = "INT-001",
+        candidate_name: str = "Manas Tripathi",
+        interviewer_names: list[str] | None = None,
+    ) -> None:
 
         self.interview = Interview(
-            interview_id="INT-001",
-            candidate_name="Manas Tripathi",
-            interviewer_names=[
-                "Alice Johnson",
-            ],
+            interview_id=interview_id,
+            candidate_name=candidate_name,
+            interviewer_names=interviewer_names or ["Alice Johnson"],
         )
 
         signals = SignalEngine()
@@ -84,4 +89,6 @@ class JohnWatson:
 
     def reset(self) -> None:
 
+        self.interview.started_at = datetime.utcnow()
+        self.interview.ended_at = None
         self.engine.reset()

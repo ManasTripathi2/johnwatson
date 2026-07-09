@@ -19,3 +19,6 @@ class Signal(ABC):
         context: InterviewContext,
     ) -> Evidence | None:
         raise NotImplementedError
+
+    def reset(self) -> None:
+        return None

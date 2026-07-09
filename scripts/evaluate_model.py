@@ -1,6 +1,11 @@
 from pathlib import Path
+import sys
 
 import joblib
+import matplotlib
+
+matplotlib.use("Agg")
+
 import matplotlib.pyplot as plt
 from sklearn.metrics import (
     accuracy_score,
@@ -11,6 +16,11 @@ from sklearn.metrics import (
     ConfusionMatrixDisplay,
 )
 from sklearn.model_selection import train_test_split
+
+ROOT = Path(__file__).resolve().parents[1]
+
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from app.services.model_trainer import ModelTrainer
 

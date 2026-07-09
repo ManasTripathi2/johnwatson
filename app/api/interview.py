@@ -18,4 +18,12 @@ def get_interview():
         "candidate_name": interview.candidate_name,
         "interviewer_names": interview.interviewer_names,
         "participant_count": len(interview.participants),
+        "participants": [
+            {
+                "participant_id": participant.participant_id,
+                "display_name": participant.display_name,
+                "active": participant.active,
+            }
+            for participant in interview.participants.values()
+        ],
     }

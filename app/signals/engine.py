@@ -38,3 +38,7 @@ class SignalEngine:
     @property
     def signals(self) -> list[Signal]:
         return self._signals
+
+    def reset(self) -> None:
+        for signal in self._signals:
+            signal.reset()

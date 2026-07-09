@@ -12,7 +12,7 @@ from app.api.ml import router as ml_router
 
 app = FastAPI(
     title="JohnWatson",
-    description="AI-powered interview participant identification system.",
+    description="Explainable interview participant identification system.",
     version="1.0.0",
 )
 

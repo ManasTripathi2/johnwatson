@@ -13,7 +13,7 @@ class ScreenShareSignal(Signal):
 
     name = "screen_share"
 
-    SCORE = 0.75
+    SCORE = 0.25
 
     def process(
         self,

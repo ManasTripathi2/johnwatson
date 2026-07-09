@@ -16,6 +16,10 @@ class SpeakingPatternSignal(Signal):
     name = "speaking_pattern"
 
     MAX_EXPECTED_SPEAKING_TIME = 300.0
+    MAX_SCORE = 0.35
+
+    def __init__(self) -> None:
+        self._last_scores: dict[str, float] = {}
 
     def process(
         self,
@@ -36,6 +40,11 @@ class SpeakingPatternSignal(Signal):
         if duration <= 0:
             return None
 
+        previous_score = self._last_scores.get(
+            participant.participant_id,
+            0.0,
+        )
+
         participant.add_speaking_time(duration)
 
         normalized_time = min(
@@ -48,7 +57,15 @@ class SpeakingPatternSignal(Signal):
             1.0,
         )
 
-        score = (normalized_time * 0.8) + (turn_bonus * 0.2)
+        cumulative_score = (
+            (normalized_time * 0.8) + (turn_bonus * 0.2)
+        ) * self.MAX_SCORE
+
+        score = max(0.0, cumulative_score - previous_score)
+        self._last_scores[participant.participant_id] = cumulative_score
+
+        if score <= 1e-6:
+            return None
 
         return Evidence(
             participant_id=participant.participant_id,
@@ -60,3 +77,6 @@ class SpeakingPatternSignal(Signal):
                 f"across {participant.speaking_turns} turns."
             ),
         )
+
+    def reset(self) -> None:
+        self._last_scores.clear()
